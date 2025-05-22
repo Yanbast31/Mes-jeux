@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes 10 Jeux</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 30px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+    .game-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 10px;
+      padding: 20px;
+      width: 200px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .game-card button {
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      display: none;
+    }
+    #backBtn {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue sur mon site de 10 jeux !</h1>
+  <div class="container" id="gameMenu">
+    <div class="game-card"><span>Tic Tac Toe</span><button onclick="launchGame('tic-tac-toe')">Jouer</button></div>
+    <div class="game-card"><span>Devine le nombre</span><button onclick="launchGame('guess-number')">Jouer</button></div>
+    <div class="game-card"><span>Pierre Feuille Ciseaux</span><button onclick="launchGame('pfc')">Jouer</button></div>
+    <div class="game-card"><span>Snake</span><button onclick="launchGame('snake')">Jouer</button></div>
+    <div class="game-card"><span>Casse-briques</span><button onclick="launchGame('casse-briques')">Jouer</button></div>
+    <div class="game-card"><span>Memory</span><button onclick="launchGame('memory')">Jouer</button></div>
+    <div class="game-card"><span>Dinosaure</span><button onclick="launchGame('dino')">Jouer</button></div>
+    <div class="game-card"><span>Pong</span><button onclick="launchGame('pong')">Jouer</button></div>
+    <div class="game-card"><span>Labyrinthe</span><button onclick="launchGame('maze')">Jouer</button></div>
+    <div class="game-card"><span>Réaction rapide</span><button onclick="launchGame('reaction')">Jouer</button></div>
+  </div>
+
+  <iframe id="gameFrame"></iframe>
+  <button id="backBtn" onclick="backToMenu()">Retour au menu</button>
+
+  <script>
+    function launchGame(gameName) {
+      document.getElementById('gameMenu').style.display = 'none';
+      const iframe = document.getElementById('gameFrame');
+      iframe.src = 'games/' + gameName + '.html';
+      iframe.style.display = 'block';
+      document.getElementById('backBtn').style.display = 'inline-block';
+    }
+
+    function backToMenu() {
+      const iframe = document.getElementById('gameFrame');
+      iframe.style.display = 'none';
+      iframe.src = '';
+      document.getElementById('backBtn').style.display = 'none';
+      document.getElementById('gameMenu').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
